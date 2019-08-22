@@ -49,7 +49,7 @@ struct{
 
 static xQueueHandle gpio_evt_queue = NULL;
 
-#define HOST_IP_ADDR "192.168.255.255"
+#define HOST_IP_ADDR "192.168.178.45" //roboy wifi: "192.168.255.255" set to HOST_IP
 #define PORT 8000
 
 #define DEFAULT_VREF    1100        //Use adc2_vref_to_gpio() to obtain a better estimate
@@ -64,8 +64,8 @@ static const adc_unit_t unit = ADC_UNIT_1;
    If you'd rather not, just change the below entries to strings with
    the config you want - ie #define EXAMPLE_WIFI_SSID "mywifissid"
 */
-#define EXAMPLE_ESP_WIFI_SSID      "roboy"
-#define EXAMPLE_ESP_WIFI_PASS      "wiihackroboy"
+#define EXAMPLE_ESP_WIFI_SSID      "BredkampPirates_EXT" //"roboy"
+#define EXAMPLE_ESP_WIFI_PASS      "81059338708304591163" // "wiihackroboy"
 #define EXAMPLE_ESP_MAXIMUM_RETRY  10
 
 /* FreeRTOS event group to signal when we are connected*/
@@ -502,6 +502,7 @@ void feedback360_task()                            // Cog keeps angle variable u
 
 void app_main()
 {
+    printf("IP is %s", HOST_IP_ADDR);
     gpio_config_t dip_config;
     dip_config.intr_type = GPIO_PIN_INTR_DISABLE; 	//Enable interrupt on both rising and falling edges
     dip_config.mode = GPIO_MODE_INPUT;        	//Set as Input
