@@ -196,6 +196,7 @@ static void command_task(void *pvParameters)
                 ESP_LOGI(TAG,"Received command_frame for motor %d with setpoint %d", m, command_frame.setpoint);
             }else if(len == 20){
                 int m,kp,ki,kd,mode;
+                ESP_LOGI("someTag", "Received control_frame for ANY motor (%d)", 0);
                 memcpy(&m,&rx_buffer[16],4);
                 if(m==command_frame.motor) {
                     memcpy(&mode, &rx_buffer[12], 4);
@@ -273,7 +274,7 @@ static void status_task(void *pvParameters)
             vTaskDelay(200 / portTICK_PERIOD_MS);
             float dt = (t1_vel-t0_vel)/1000000.0f; // in s
             float vel = (dt>0?(status_frame.pos-pos_prev)/dt:0);
-//            status_frame.vel = vel;
+            status_frame.vel = vel;
 
 //            ESP_LOGI("vel", "%f %f",vel, dt);
             pos_prev = status_frame.pos;
@@ -372,7 +373,7 @@ void servo_task(void *ignore) {
 
     vTaskDelay(1000/portTICK_PERIOD_MS);
 
-    control_frame.mode = 2;
+    control_frame.mode = 0;
     control_frame.Kp = 1;
     control_frame.Ki = 0;
     control_frame.Kd = 0;
