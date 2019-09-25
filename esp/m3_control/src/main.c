@@ -49,7 +49,7 @@ struct{
 
 static xQueueHandle gpio_evt_queue = NULL;
 
-#define HOST_IP_ADDR "10.42.0.1"
+#define HOST_IP_ADDR "192.168.255.255" // Roboy network
 #define PORT 8000
 
 #define DEFAULT_VREF    1100        //Use adc2_vref_to_gpio() to obtain a better estimate
@@ -64,8 +64,8 @@ static const adc_unit_t unit = ADC_UNIT_1;
    If you'd rather not, just change the below entries to strings with
    the config you want - ie #define EXAMPLE_WIFI_SSID "mywifissid"
 */
-#define EXAMPLE_ESP_WIFI_SSID      "laura-MacBookPro"
-#define EXAMPLE_ESP_WIFI_PASS      "pAIdHARF"
+#define EXAMPLE_ESP_WIFI_SSID      "roboy"
+#define EXAMPLE_ESP_WIFI_PASS      "wiihackroboy"
 #define EXAMPLE_ESP_MAXIMUM_RETRY  10
 
 /* FreeRTOS event group to signal when we are connected*/
@@ -373,7 +373,7 @@ void servo_task(void *ignore) {
 
     vTaskDelay(1000/portTICK_PERIOD_MS);
 
-    control_frame.mode = 0;
+    control_frame.mode = 2;
     control_frame.Kp = 1;
     control_frame.Ki = 0;
     control_frame.Kd = 0;
