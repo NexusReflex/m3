@@ -3,7 +3,7 @@ myo mini muscle
 ![m3](https://github.com/Roboy/m3/blob/master/images/m3.png?raw=true "m3")
 ![m3_schematics](https://github.com/Roboy/m3/blob/master/images/m3_schematics.png?raw=true "m3_schematics")
 
-1. Download this repo using: 
+1. Download this repo using:
 >> git clone --recursive https://github.com/Roboy/m3.git
 
 2. Add the eps-idf and eps-idf/tools to your PATH:
@@ -16,7 +16,7 @@ myo mini muscle
 >> cd /esp/m3_control
 >> idf.py build
 
-5. Flash it. Hold down Reset and Boot. 
+5. Flash it. Hold down Reset and Boot.
 >> idf.py -p [PORT] flash [monitor]
 
 Let Reset go, while keeping Boot pressed until flashing is done.
